@@ -315,7 +315,7 @@ BEGIN
 	OPEN c_customers;
 	LOOP
 		FETCH c_customers INTO c_id, c_name, c_addr;
-		EXIT WHEN c_customers.%NOTFOUND;
+		EXIT WHEN c_customers%NOTFOUND;
 		DBMS_OUTPUT.PUT_LINE(C_ID || ' ' || c_name || ' '  || c_addr);
 	END LOOP;
 	CLOSE c_customers;
