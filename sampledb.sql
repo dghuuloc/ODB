@@ -395,18 +395,17 @@ BEGIN
 	book2.book_id := 6495700;
 	
 	-- Print book 1 record
-	DBMS_OUTPUT.PUTLINE('Book 1 title: ' || book1.title);
-	DBMS_OUTPUT.PUTLINE('Book 1 author: ' || book1.author);
-	DBMS_OUTPUT.PUTLINE('Book 1 subject: ' || book1.subject);
-	DBMS_OUTPUT.PUTLINE('Book 1 book_id: ' || book1.book_id);
+	DBMS_OUTPUT.PUT_LINE('Book 1 title: ' || book1.title);
+	DBMS_OUTPUT.PUT_LINE('Book 1 author: ' || book1.author);
+	DBMS_OUTPUT.PUT_LINE('Book 1 subject: ' || book1.subject);
+	DBMS_OUTPUT.PUT_LINE('Book 1 book_id: ' || book1.book_id);
 	
 	-- Print book 2 record
-	DBMS_OUTPUT.PUTLINE('Book 2 title: ' || book2.title);
-	DBMS_OUTPUT.PUTLINE('Book 2 author: ' || book2.author);
-	DBMS_OUTPUT.PUTLINE('Book 2 subject: ' || book2.subject);
-	DBMS_OUTPUT.PUTLINE('Book 2 book_id: ' || book2.book_id);
+	DBMS_OUTPUT.PUT_LINE('Book 2 title: ' || book2.title);
+	DBMS_OUTPUT.PUT_LINE('Book 2 author: ' || book2.author);
+	DBMS_OUTPUT.PUT_LINE('Book 2 subject: ' || book2.subject);
+	DBMS_OUTPUT.PUT_LINE('Book 2 book_id: ' || book2.book_id);
 END;
-
 
 -- Using Procedure for printing book records
 DECLARE 
@@ -421,10 +420,10 @@ DECLARE
 
 	PROCEDURE printbook(book books) IS
 		BEGIN
-			DBMS_OUTPUT.PUTLINE('Book title: ' || book.title);
-			DBMS_OUTPUT.PUTLINE('Book author: ' || book.author);
-			DBMS_OUTPUT.PUTLINE('Book subject: ' || book.subject);
-			DBMS_OUTPUT.PUTLINE('Book book_id: ' || book.book_id);
+			DBMS_OUTPUT.PUT_LINE('Book title: ' || book.title);
+			DBMS_OUTPUT.PUT_LINE('Book author: ' || book.author);
+			DBMS_OUTPUT.PUT_LINE('Book subject: ' || book.subject);
+			DBMS_OUTPUT.PUT_LINE('Book book_id: ' || book.book_id);
 		END;
 BEGIN
 	-- Book 1 Specification
