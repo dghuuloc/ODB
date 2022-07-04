@@ -11,6 +11,7 @@
 --------------------------------------------------------------------
 
 -- create anonymous block 
+SET SERVEROUTPUT ON;
 
 DECALRE
 	-- Variable Declaration
