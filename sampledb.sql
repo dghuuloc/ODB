@@ -516,3 +516,107 @@ VALUES (7, 'Kriti', 22, 'HP', 7500.00);
 UPDATE customers 
 SET salary = salary + 500
 WHERE id = 7;
+
+--------------------------------------------------------------------
+-- PL/SQL Packages --
+--------------------------------------------------------------------
+
+-- Creating a package
+CREATE PACKAGE cust_sal	AS
+	PROCEDURE find(c_id customers.id%TYPE);
+END cust_sal;
+
+-- creating package body
+CREATE OR REPLACE PACKAGE BODY cust_sal	AS
+	PROCEDURE find_sal(c_id customers.id%TYPE) IS
+		c_sal customers.salary%TYPE;
+	BEGIN
+		SELECT salary INTO c_sal
+		FROM customers
+		WHERE id = c_id;
+		DBMS_OUTPUT.PUT_LINE('Salary: ' || c_sal);
+	END find_sal;;
+END cust_sal;
+
+-- Calling find_sal method and cust_sal package
+DECLARE
+	code customers.id%TYPE := &cc_id;
+BEGIN
+	cust_sal.find_sal(code);
+END;
+
+--------------------------------------------------------------------
+-- PL/SQL Packages in specific example--
+--------------------------------------------------------------------
+
+-- The package Specification
+CREATE OR REPLACE PACKAGE c_package AS
+	-- Adds a custome
+	PROCEDURE addCustomer(
+		c_id customers.id%TYPE,
+		c_name customers.name%TYPE,
+		c_age customers.age%TYPE,
+		c_addr customers.address%TYPE,
+		c_sal customers.salary%TYPE
+	);
+	
+	-- Removes a customer
+	PROCEDURE delCustomer(c_id customers.id%TYPE);
+	
+	-- List all customers
+	PROCEDURE listCustomer;
+END c_package;
+
+-- Creating the package Body
+CREATE OR REPLACE PACKAGE BODY c_package AS
+
+	PROCEDURE addCustomer(
+		c_id customers.id%TYPE,
+		c_name customers.name%TYPE,
+		c_age customers.age%TYPE,
+		c_addr customers.address%TYPE,
+		c_sal customers.salary%TYPE
+		) 
+	IS
+	BEGIN
+		INSERT INTO customers (id, name, age, address, salary)
+		VALUES(c_id, c_name, c_age, c_addr, c_sal);
+	END addCustomer;
+	
+	PROCEDURE delCustomer(c_id customers.id%TYPE) 
+	IS 
+	BEGIN
+		DELETE FROM customers
+		WHERE id = c_id;
+	END delCustomer;
+	
+	PROCEDURE listCustomer IS
+		CURSOR c_customers IS
+			SELECT name 
+			FROM customers;
+		TYPE c_list IS TABLE OF customers.name%TYPE;
+		name_list c_list := c_list();
+		counter INTEGER := 0;
+	BEGIN
+		FOR n IN c_customers LOOP
+			counter := counter + 1;
+			name_list.extend;
+			name_list(counter) := n.name;
+			DBMS_OUTPUT.PUT_LINE('Customer(' || counter|| ')' || name_list(counter));
+		END LOOP;
+	END listCustomer;
+
+END c_package;
+
+--- Using the c_package
+DECLARE
+	code customers.id%TYPE;
+BEGIN
+	c_package.addCustomer(8, 'Rajnish', 25, 'Chennai', 3500);
+	c_package.addCustomer(9, 'Subham', 32, 'Delhi', 7500);
+	c_package.listCustomer;
+	c_package.delcustomer(code);
+	c_package.listCustomer;
+END;
+
+
