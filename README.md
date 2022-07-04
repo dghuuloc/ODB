@@ -442,6 +442,53 @@ DECLARE
 my_exception EXCEPTION;
 ```
 
+### PL/SQL Triggers
+
+Triggers are stored programs, which are automatically executed or fired when some events occur. Triggers are, in fact, written to be executed in response to any of the following events −
+
+- A database manipulation (DML) statement (DELETE, INSERT, or UPDATE)
+- A database definition (DDL) statement (CREATE, ALTER, or DROP)
+- A databse operation (SERVERERROR, LOGON, LOGOFF, STARTUP, or SHUTDOWN).
+
+#### Creating Triggers
+---
+
+```
+CREATE [OR REPLACE] TRIGGER trigger_name
+{BEFOR | AFTER | INSTEAD OF}
+{INSERT [OR] | UPDATE [OR] | DELETE}
+[OF col_name] 
+ON table_name
+[REFERENCING OLD AS o NEW AS n]
+[FOR EACH ROW]
+WHEN (condition)
+
+DECLARE
+	-- declaration statements
+BEGIN
+	-- Executable statements
+EXCEPTION
+	-- Exception handling statements
+END;
+```
+Where,
+
+- CREATE [OR REPLACE] TRIGGER trigger_name − Creates or replaces an existing trigger with the trigger_name.
+
+- {BEFORE | AFTER | INSTEAD OF} − This specifies when the trigger will be executed. The INSTEAD OF clause is used for creating trigger on a view.
+
+- {INSERT [OR] | UPDATE [OR] | DELETE} − This specifies the DML operation.
+
+- [OF col_name] − This specifies the column name that will be updated.
+
+- [ON table_name] − This specifies the name of the table associated with the trigger.
+
+- [REFERENCING OLD AS o NEW AS n] − This allows you to refer new and old values for various DML statements, such as INSERT, UPDATE, and DELETE.
+
+- [FOR EACH ROW] − This specifies a row-level trigger, i.e., the trigger will be executed for each row being affected. Otherwise the trigger will execute just once when the SQL statement is executed, which is called a table level trigger.
+
+- WHEN (condition) − This provides a condition for rows for which the trigger would fire. This clause is valid only for row-level triggers.
+
 ### Subprogram
 ---
 A subprogram can be invoked by another subprogram or program which is called the __calling program__.
