@@ -143,4 +143,61 @@ BEGIN
 	END LOOP;
 END;
 
+--------------------------------------------------------------------
+-- Simple Procedure for displaying the string 'Hello World' --
+--------------------------------------------------------------------
+
+-- Creatind greeting Procedure
+CREATE OR REPLACE PROCEDURE greetings AS
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('Hello world');
+END;
+
+-- Executing a stanalone Procedure
+EXECUTE greetings;
+
+-- The procedure can also call from another PL/SQL anonymous block
+BEGIN
+	greetings;
+END;
+
+-- Deleting a Standalone Procedure
+DROP PROCEDURE greetings;
+
+--------------------------------------------------------------------
+-- Finding min number using Procedure --
+--------------------------------------------------------------------
+
+-- Using IN and OUT Mode 1
+DECLARE
+	a NUMBER;
+	b NUMBER;
+	c NUMBER;
+    PROCEDURE findMin(x IN NUMBER, y IN NUMBER, z OUT NUMBER) IS
+        BEGIN
+            IF x < y THEN
+                z := x;
+            ELSE
+                z := y;
+            END IF;
+        END;
+BEGIN
+	a := 23;
+	b :=  45;
+	findMin(a, b, c);
+	DBMS_OUTPUT.PUT_LINE('Minium of (23, 45) is: ' || c);
+END;
+
+-- Using IN and OUT Mode 2
+DECLARE 
+	a NUMBER;
+	PROCEDURE squareNum(x IN OUT NUMBER) IS
+		BEGIN
+			x := x * x;
+		END;
+BEGIN
+	a := 23;
+	squareNum(a);
+	DBMS_OUTPUT.PUT_LINE('Square of (23): ' || a);
+END;
 
