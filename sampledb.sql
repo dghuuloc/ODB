@@ -165,7 +165,7 @@ END;
 DROP PROCEDURE greetings;
 
 --------------------------------------------------------------------
--- Finding min number using Procedure --
+-- Finding Minium number using Procedure --
 --------------------------------------------------------------------
 
 -- Using IN and OUT Mode 1
@@ -201,3 +201,54 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE('Square of (23): ' || a);
 END;
 
+--------------------------------------------------------------------
+-- Creating a function --
+--------------------------------------------------------------------
+-- Crating a totalcustomer fucntion
+SELECT * FROM custoemrs;
+
+CREATE OR REPLACE totalCustomers
+	RETURN NUMBER IS
+		total NUMBER(2) : = 0;
+	BEGIN
+		SELECT COUNT(*) INTO total
+		FROM customers;
+		
+		RETURN total;
+	END;
+
+-- Calling a totalCustomers function
+DECLARE
+	c NUMBER(2);
+BEGIN
+	c := totalCustomers();
+	DBMS_OUTPUT.PUT_LINE('Total no. of Customer: ' || c);
+	
+END;
+
+--------------------------------------------------------------------
+-- Finding Maximum number using Function --
+--------------------------------------------------------------------
+
+DECLARE
+	a NUMBER; 
+	b NUMBER;
+	c NUMBER;
+	FUNCTION findMax(x IN NUMBER, y IN NUMBER)
+		RETURN NUMBER IS
+			z NUMBER;
+		BEGIN
+			IF x > y THEN
+				z := x;
+			ELSE
+				z := y;
+			END IF;
+			
+			RETURN z;
+		END;
+BEGIN
+	a := 23;
+	b := 45;
+	c := findMax(a, b);
+	DBMS_OUTPUT.PUT_LINE('Maximum of (23, 45): ' || c);
+END;
