@@ -420,7 +420,7 @@ EXCEPTION
 END;
 ```
 
-__Raising Exceptions
+__Raising Exceptions__
 
 ```
 DECLARE 
