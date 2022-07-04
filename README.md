@@ -358,6 +358,15 @@ __Fetching the Cursor__ - Fetching the cursor involves accessing one row at a ti
 
 __Closing the Cursor__ - closing the cursor means releasing the allocated memory.
 
+### PL/SQL Records
+
+A __record__ is a data structure that can hold data items of different kinds. Records consist of different fields, similar to a row of a database table.
+
+PL/SQL can handle the following types of records - 
+- Table-based
+- Cursor-based records
+- User-defined records
+
 ### Subprogram
 ---
 A subprogram can be invoked by another subprogram or program which is called the __calling program__.
@@ -370,7 +379,6 @@ A Subprogram can be created -
 PL/SQL provides two kinds of subprograms - 
 - __Function__ - These subprograms return a single value; mainly used to compute and return a value.
 - __Procedure__ − These subprograms do not return a value directly; mainly used to perform an action.
-
 
 #### Methods for Passing Parameters
 
