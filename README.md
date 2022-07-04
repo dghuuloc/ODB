@@ -324,9 +324,52 @@ RecordIndex.person_code
 ### PL/SQL Cursors
 ---
 
+Oracle creates a memory area, known as the context area, for processing an SQL statement, which contains all the information needed for processing the statement; for example, the number of rows processed, etc.
+
+A cursor is a pointer to this context area. PL/SQL controls the context area through a cursor. A cursor holds the rows (one or more) returned by a SQL statement.
+
+There are two types of cursors −
+- Implicit cursors
+- Explicit cursors
+
 #### Implicit Cursors
 
+Implicit cursors are automatically created by Oracle whenever an SQL statement is executed, when there is no explicit cursor for the statement. Programmers cannot control the implicit cursors and the information in it.
+
+Whenever a DML statement (INSERT, UPDATE and DELETE) is issued, an implicit cursor is associated with this statement. For INSERT operations, the cursor holds the data that needs to be inserted. For UPDATE and DELETE operations, the cursor identifies the rows that would be affected.
+
 #### Explicit Cursors
+
+Explicit cursors are programmer-defined cursors for gaining more control over the context area. An explicit cursor should be defined in the declaration section of the PL/SQL Block. It is created on a SELECT Statement which returns more than one row.
+
+The syntax for creating an explicit cursor is −
+
+```
+CURSOR cursor_name IS seclect_statement;
+```
+
+Working with an explicit cursor includes the following steps −
+
+- Declaring the cursor for initializing the memory
+- Opening the cursor for allocating the memory
+- Fetching the cursor for retrieving the data
+- Closing the cursor to release the allocated memory
+
+__Declaring the Cursor__
+
+Declaring the cursor defines the cursor with a name and the associated SELECT statement.
+
+__Opening the Cursor__
+
+Opening the cursor allocates the memory for the cursor and makes it ready for fetching the rows returned by the SQL statement into it.
+
+__Fetching the Cursor__
+
+Fetching the cursor involves accessing one row at a time.
+
+__Closing the Cursor__
+
+closing the cursor means releasing the allocated memory.
 
 ### Subprogram
 ---
