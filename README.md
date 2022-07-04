@@ -22,6 +22,13 @@ __The syntax for declaring variable:__
 variable_name [CONSTANT] datatype [NOT NULL] [:= | DEFAULT initial_value];
 ```
 
+#### Variable Scope in PL/SQL
+
+PL/SQL allows the nesting of blocks, i.e., each program block may contain another inner block. If a variable is declared within an inner block, it is not accessible to the outer block. However, if a variable is declared and accessible to an outer block, it is also accessible to all nested inner blocks. There are two types of variable scope −
+
+- Local variables − Variables declared in an inner block and not accessible to outer blocks.
+
+- Global variables − Variables declared in the outermost block or a package.
 
 ### Data Types
 ---
