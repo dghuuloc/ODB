@@ -392,6 +392,56 @@ To access any field of a record, we use the dot (.) operator. The member access 
 
 A record can be passed as a subprogram parameter just as you pass any other variable.
 
+### PL/SQL Exception Handling
+
+There are two types of exceptions −
+
+- System-defined exceptions
+- User-defined exceptions
+
+__Syntax for Eception Handling__
+
+```
+DECLARE 
+   <declarations section> 
+BEGIN 
+   <executable command(s)> 
+EXCEPTION 
+   <exception handling goes here > 
+   WHEN exception1 THEN  
+      exception1-handling-statements  
+   WHEN exception2  THEN  
+      exception2-handling-statements  
+   WHEN exception3 THEN  
+      exception3-handling-statements 
+   ........ 
+   WHEN others THEN 
+      exception3-handling-statements 
+END;
+```
+
+__Raising Exceptions
+
+```
+DECLARE 
+   exception_name EXCEPTION; 
+BEGIN 
+   IF condition THEN 
+      RAISE exception_name; 
+   END IF; 
+EXCEPTION 
+   WHEN exception_name THEN 
+   statement; 
+END; 
+```
+
+__User-defined Exceptions__
+
+```
+DECLARE
+my_exception EXCEPTION;
+```
+
 ### Subprogram
 ---
 A subprogram can be invoked by another subprogram or program which is called the __calling program__.
