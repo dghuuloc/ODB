@@ -96,3 +96,24 @@ BEGIN
    ('Customer ' ||c_name || ' from ' || c_addr || ' earns ' || c_sal); 
 END;
 
+--------------------------------------------------------------------
+-- the following program illustrates the use of varrays --
+--------------------------------------------------------------------
+
+DECLARE
+	TYPE namesarray IS VARRAY(5) OF VARCHAR2(10);
+	TYPE grades IS VARRAY(5) OF INTEGER;
+	names namesarray;
+	marks grades;
+	total INTEGER;
+BEGIN
+	names := namesarray('Kavita', 'Pritam', 'Ayan', 'Rishav', 'Aziz');
+	marks := grades(98, 97, 78, 87, 92);
+	total := names.COUNT;
+	DBMS_OUTPUT.PUT_LINE('Total ' || total || ' Students');
+	FOR i IN 1..total LOOP
+		DBMS_OUTPUT.PUT_LINE('Student ' || names(i) || 'Marks: ' || marks(i));
+	END LOOP;
+END;
+
+
