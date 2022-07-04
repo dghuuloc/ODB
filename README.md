@@ -197,6 +197,37 @@ END CASE;
 
 ### Array Handling
 
+ A varray is used to store an ordered collection of data, however it is often better to think of an array as a collection of variables of the same type.
+ 
+#### Creating a VARRAY at the schema level
+
+```
+CREATE OR REPLACE TYPE varray_type_name IS | AS VARRAY(n) OF <element_type>;
+```
+
+Where,
+
+- varray_type_name is a valid attribute name,
+- n is the number of elements (maximum) in the varray,
+- element_type is the data type of the elements of the array.
+
+For example,
+
+```
+CREATE OR REPLACE TYPE namearray AS VARRAY(3) OF VARCHAR2(10);
+```
+#### Creating a VARRAY type within a PL/SQL block
+
+```
+TYPE varray_name IS | AS VARRAY(n) OF <element-type>;
+```
+For example -
+
+```
+TYPE namearray IS VARRAY(5) OF VARCHAR2(10);
+TYPE grades IS VARRAY(5) OF INTEGER;
+```
+
 #### Associative arrays (index-by tables)
 
 #### Nested Tables
@@ -446,7 +477,3 @@ DROP PACKAGE [BODY] schema_name.package.name;
 If you want to drop only the body of the package, you need to specify the `BODY` keyword. If you omit the `BODY` keyword, then the statement drops both the body and specification of the package.
 
 Oracle does not invalidate dependent objects when you drop only the body of a package but not the package specification. However, you will not be able to call one of the procedures or function declared in the package specification till you recreate the package body.
-
-
-
-1
