@@ -79,6 +79,10 @@ VALUES (5, 'Hardik', 27, 'Bhopal', 8500.00 );
 INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY) 
 VALUES (6, 'Komal', 22, 'MP', 4500.00 );
 
+-- Drop customers table
+
+DROP TABLE customers;
+
 --------------------------------------------------------------------
 -- Using SELECT INTO clause of SQL
 --------------------------------------------------------------------
@@ -113,6 +117,29 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE('Total ' || total || ' Students');
 	FOR i IN 1..total LOOP
 		DBMS_OUTPUT.PUT_LINE('Student ' || names(i) || 'Marks: ' || marks(i));
+	END LOOP;
+END;
+
+--------------------------------------------------------------------
+-- Folowing example makes the use of curssor with varray --
+--------------------------------------------------------------------
+
+-- quering customer table
+SELECT * FROM customers;
+
+-- using cursor
+DECLARE 
+	CURSOR c_customers IS
+	SELECT name FROM customers;
+	TYPE c_list IS VARRAY(6) OF customers.name%TYPE;
+	name_list c_list := c_list();
+	counter INTEGER := 0;
+BEGIN
+	FOR n IN c_customers LOOP
+		counter := counter + 1;
+		name_list.extend;
+		name_list(counter) := n.name;
+		DBMS_OUTPUT.PUT_LINE('Customer('||counter||'): ' || name_list(counter));
 	END LOOP;
 END;
 
