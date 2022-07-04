@@ -428,9 +428,20 @@ EXCEPTION --Exception-handling part (optional)
   -- Exception handlers for exceptions (errors) raised in executable part
 END [function_name]; --End of executable part (required)
 ```
+
+Where,
+
+- function-name specifies the name of the function.
+- [OR REPLACE] option allows the modification of an existing function.
+- The optional parameter list contains name, mode and types of the parameters. IN represents the value that will be passed from outside and OUT represents the parameter that will be used to return a value outside of the procedure.
+- The function must contain a return statement.
+- The RETURN clause specifies the data type you are going to return from the function.
+- function-body contains the executable part.
+- The AS keyword is used instead of the IS keyword for creating a standalone function.
+
 #### Calling a PL/SQL Function
 
-You can use a function anywhere that you use an expression of the same type. You can call a function in various places such as:
+To call a function, you simply need to pass the required parameters along with the function name and if the function returns a value, then you can store the returned value.
 
 ```
 DECLARE 
