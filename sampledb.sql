@@ -204,8 +204,9 @@ END;
 --------------------------------------------------------------------
 -- Creating a function --
 --------------------------------------------------------------------
--- Crating a totalcustomer fucntion
-SELECT * FROM custoemrs;
+
+-- Crating a totalcustomer function
+SELECT * FROM customers;
 
 CREATE OR REPLACE FUNCTION totalCustomers
 	RETURN NUMBER IS
@@ -225,6 +226,9 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE('Total no. of Customer: ' || c);
 	
 END;
+
+-- drop function
+DROP FUNCTION totalCustomers;
 
 --------------------------------------------------------------------
 -- Finding Maximum number using Function --
@@ -252,3 +256,4 @@ BEGIN
 	c := findMax(a, b);
 	DBMS_OUTPUT.PUT_LINE('Maximum of (23, 45): ' || c);
 END;
+
