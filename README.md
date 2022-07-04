@@ -330,6 +330,19 @@ RecordIndex.person_code
 
 #### Explicit Cursors
 
+### Subprogram
+---
+A subprogram can be invoked by another subprogram or program which is called the __calling program__.
+
+A Subprogram can be created - 
+- At the schema level
+- Inside a package
+- Inside a PL/SQL block
+ 
+PL/SQL provides two kinds of subprograms - 
+- __Function__ - These subprograms return a single value; mainly used to compute and return a value.
+- __Procedure__ − These subprograms do not return a value directly; mainly used to perform an action.
+
 
 ### PL/SQL Stored Procedure
 ---
