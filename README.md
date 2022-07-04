@@ -332,13 +332,15 @@ There are two types of cursors −
 - Implicit cursors
 - Explicit cursors
 
-#### Implicit Cursors
+#### ___Implicit Cursors___
 
 Implicit cursors are automatically created by Oracle whenever an SQL statement is executed, when there is no explicit cursor for the statement. Programmers cannot control the implicit cursors and the information in it.
 
 Whenever a DML statement (INSERT, UPDATE and DELETE) is issued, an implicit cursor is associated with this statement. For INSERT operations, the cursor holds the data that needs to be inserted. For UPDATE and DELETE operations, the cursor identifies the rows that would be affected.
 
-#### Explicit Cursors
+In PL/SQL, you can refer to the most recent implicit cursor as the SQL cursor, which always has attributes such as %FOUND, %ISOPEN, %NOTFOUND, and %ROWCOUNT. The SQL cursor has additional attributes, %BULK_ROWCOUNT and %BULK_EXCEPTIONS, designed for use with the FORALL statement.
+
+#### ___Explicit Cursors___
 
 Explicit cursors are programmer-defined cursors for gaining more control over the context area. An explicit cursor should be defined in the declaration section of the PL/SQL Block. It is created on a SELECT Statement which returns more than one row.
 
@@ -355,21 +357,13 @@ Working with an explicit cursor includes the following steps −
 - Fetching the cursor for retrieving the data
 - Closing the cursor to release the allocated memory
 
-__Declaring the Cursor__
+__Declaring the Cursor__ - Declaring the cursor defines the cursor with a name and the associated SELECT statement.
 
-Declaring the cursor defines the cursor with a name and the associated SELECT statement.
+__Opening the Cursor__ - Opening the cursor allocates the memory for the cursor and makes it ready for fetching the rows returned by the SQL statement into it.
 
-__Opening the Cursor__
+__Fetching the Cursor__ - Fetching the cursor involves accessing one row at a time.
 
-Opening the cursor allocates the memory for the cursor and makes it ready for fetching the rows returned by the SQL statement into it.
-
-__Fetching the Cursor__
-
-Fetching the cursor involves accessing one row at a time.
-
-__Closing the Cursor__
-
-closing the cursor means releasing the allocated memory.
+__Closing the Cursor__ - closing the cursor means releasing the allocated memory.
 
 ### Subprogram
 ---
