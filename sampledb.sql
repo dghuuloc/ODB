@@ -320,3 +320,126 @@ BEGIN
 	END LOOP;
 	CLOSE c_customers;
 END;
+
+--------------------------------------------------------------------
+-- Table-Based Records --
+--------------------------------------------------------------------
+
+DECLARE 
+	customer_rec customers%ROWTYPE;
+BEGIN
+	SELECT * INTO customer_rec
+	FROM customers
+	WHERE id = 5;
+	DBMS_OUTPUT.PUT_LINE('Customer ID: ' || customer_rec.id);
+	DBMS_OUTPUT.PUT_LINE('Customer Name: ' || customer_rec.name);
+	DBMS_OUTPUT.PUT_LINE('Customer Address: ' || customer_rec.address);
+	DBMS_OUTPUT.PUT_LINE('Customer Salary: ' || customer_rec.salary);
+END;
+
+--------------------------------------------------------------------
+-- Cursor-Based Records --
+--------------------------------------------------------------------
+
+DECLARE 
+	CURSOR customer_cur IS
+		SELECT id, name, address
+		FROM customers;
+	customer_rec customer_cur%ROWTYPE;
+BEGIN
+	OPEN customer_cur;
+	LOOP
+		FETCH customer_cur INTO customer_rec; 
+		EXIT WHEN  customer_cur%NOTFOUND;
+		DBMS_OUTPUT.PUT_LINE(customer_rec.id || ' ' || customer_rec.name);
+	END LOOP;
+END;
+
+
+--------------------------------------------------------------------
+-- User-defined Records --
+--------------------------------------------------------------------
+
+-- Defining a Record
+DECLARE 
+	TYPE books IS RECORD (
+		title VARCHAR(50),
+		author VARCHAR(50),
+		subject VARCHAR(100),
+		book_id NUMBER
+	);
+book1 books;
+book2 books;
+
+-- Accessing Fields
+DECLARE 
+	TYPE books IS RECORD (
+		title VARCHAR(50),
+		author VARCHAR(50),
+		subject VARCHAR(100),
+		book_id NUMBER
+	);
+book1 books;
+book2 books;
+BEGIN
+	-- Book 1 Specification
+	book1.title := 'C programming';
+	book1.author := 'Nuha Ali';
+	book1.subject := 'C Programming Tutorial';
+	book1.book_id := 6495407;
+	
+	--- Book 2 specification
+	book2.title := 'Telecom Billing';
+	book2.author := 'Zara Ali';
+	book2.subject := 'Telecom Billing Tutorial';
+	book2.book_id := 6495700;
+	
+	-- Print book 1 record
+	DBMS_OUTPUT.PUTLINE('Book 1 title: ' || book1.title);
+	DBMS_OUTPUT.PUTLINE('Book 1 author: ' || book1.author);
+	DBMS_OUTPUT.PUTLINE('Book 1 subject: ' || book1.subject);
+	DBMS_OUTPUT.PUTLINE('Book 1 book_id: ' || book1.book_id);
+	
+	-- Print book 2 record
+	DBMS_OUTPUT.PUTLINE('Book 2 title: ' || book2.title);
+	DBMS_OUTPUT.PUTLINE('Book 2 author: ' || book2.author);
+	DBMS_OUTPUT.PUTLINE('Book 2 subject: ' || book2.subject);
+	DBMS_OUTPUT.PUTLINE('Book 2 book_id: ' || book2.book_id);
+END;
+
+
+-- Using Procedure for printing book records
+DECLARE 
+	TYPE books IS RECORD (
+		title VARCHAR(50),
+		author VARCHAR(50),
+		subject VARCHAR(100),
+		book_id NUMBER
+	);
+	book1 books;
+	book2 books;
+
+	PROCEDURE printbook(book books) IS
+		BEGIN
+			DBMS_OUTPUT.PUTLINE('Book title: ' || book.title);
+			DBMS_OUTPUT.PUTLINE('Book author: ' || book.author);
+			DBMS_OUTPUT.PUTLINE('Book subject: ' || book.subject);
+			DBMS_OUTPUT.PUTLINE('Book book_id: ' || book.book_id);
+		END;
+BEGIN
+	-- Book 1 Specification
+	book1.title := 'C programming';
+	book1.author := 'Nuha Ali';
+	book1.subject := 'C Programming Tutorial';
+	book1.book_id := 6495407;
+	
+	--- Book 2 specification
+	book2.title := 'Telecom Billing';
+	book2.author := 'Zara Ali';
+	book2.subject := 'Telecom Billing Tutorial';
+	book2.book_id := 6495700;
+	
+	-- Use procedure to print book information
+	printbook(book1);
+	printbook(book2);
+END;
