@@ -281,3 +281,42 @@ BEGIN
 	factorial := fact(num);
 	DBMS_OUTPUT.PUT_LINE('Factorial ' || num || ' is ' || factorial);
 END;
+
+
+--------------------------------------------------------------------
+-- Implicit Cursors --
+--------------------------------------------------------------------
+
+DECALRE 
+	total_rows NUMBER(2);
+BEGIN
+	UPDATE customers
+	SET salary =  salary + 500;
+	IF sql%NOTFOUND THEN
+		DBMS_OUTPUT.PUT_LINE('no customers selected');
+	ELSIF
+		total_rows := sql%ROWCOUNT;
+		DBMS_OUTPUT.PUT_LINE(total_rows || ' customers selected ');
+	END IF;
+END;
+
+--------------------------------------------------------------------
+-- Explicit Cursors --
+--------------------------------------------------------------------
+
+DECLARE
+	c_id customers.id%TYPE;
+	c_name customers.name%TYPE;
+	c_addr customers.address%TYPE;
+	
+	CURSOR c_customers IS
+		SELECT id, name, address FROM customers;
+BEGIN
+	OPEN c_customers;
+	LOOP
+		FETCH c_customers INTO c_id, c_name, c_addr;
+		EXIT WHEN c_customers.%NOTFOUND;
+		DBMS_OUTPUT.PUT_LINE(C_ID || ' ' || c_name || ' '  || c_addr);
+	END LOOP;
+	CLOSE c_customers;
+END;
