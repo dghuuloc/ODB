@@ -207,9 +207,9 @@ END;
 -- Crating a totalcustomer fucntion
 SELECT * FROM custoemrs;
 
-CREATE OR REPLACE totalCustomers
+CREATE OR REPLACE FUNCTION totalCustomers
 	RETURN NUMBER IS
-		total NUMBER(2) : = 0;
+		total NUMBER(2) := 0;
 	BEGIN
 		SELECT COUNT(*) INTO total
 		FROM customers;
