@@ -30,6 +30,29 @@ PL/SQL allows the nesting of blocks, i.e., each program block may contain anothe
 
 - Global variables − Variables declared in the outermost block or a package.
 
+For example, 
+
+```
+DECLARE
+	-- Global variables 
+	num1 NUMBER := 95;
+	num2 NUMBER := 85;
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('Outer Variable num1: ' || num1);
+	DBMS_OUTPUT.PUT_LINE('Outer Variable num2: ' || num2);
+	
+	DECLARE
+		-- Local variables
+		num1 NUMBER := 195
+		num2 NUMBER := 185;
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE('Outer Variable num1: ' || num1);
+		DBMS_OUTPUT.PUT_LINE('Outer Variable num2: ' || num2);
+	
+	END;
+END;
+```
+
 ### Data Types
 ---
 
