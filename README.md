@@ -326,8 +326,6 @@ RecordIndex.person_code
 
 #### Implicit Cursors
 
-
-
 #### Explicit Cursors
 
 ### Subprogram
@@ -343,6 +341,34 @@ PL/SQL provides two kinds of subprograms -
 - __Function__ - These subprograms return a single value; mainly used to compute and return a value.
 - __Procedure__ − These subprograms do not return a value directly; mainly used to perform an action.
 
+
+#### Methods for Passing Parameters
+
+- __Positional Notation__
+In positional notation, the first actual parameter is substituted for the first formal parameter; the second actual parameter is substituted for the second formal parameter, and so on.
+
+```
+findMin(a, b, c, d);
+```
+- __Named Notations__
+In named notation, the actual parameter is associated with the formal parameter using the arrow symbol __( => )__. 
+
+```
+findMin(x => a, y => b, z = > c, m => d);
+```
+
+- __Mixed Notation__
+In mixed notation, you can mix both notations in procedure call; however, the positional notation should precede the named notation.
+
+```
+findMin(a, b, c, m => d);
+```
+
+or 
+
+```
+findMin(x => a, b, c, d);
+```
 
 ### PL/SQL Stored Procedure
 ---
