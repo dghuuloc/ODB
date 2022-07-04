@@ -4,7 +4,7 @@
 ### Introduction to PL/SQL
 ---
 
-#### What us PL/SQL?
+#### What is PL/SQL?
 
 PL/SQL is a block structured language. The programs of PL/SQL are logical block that contains any number of nested sub-blocks. Pl/SQL stands for "Procedural Language extension of SQL" that is used in Oracle. PL/SQL is integrated with Oracle database
 
@@ -233,13 +233,6 @@ TYPE grades IS VARRAY(5) OF INTEGER;
 #### Nested Tables
 
 #### Varrays (Variable-size arrays)
-
-### Cursors
-
-A cursor is a pointer to a private SQL area that stores information coming from a SELECT or data manipulation language (DML) statement (INSERT, UPDATE, DELETE, or MERGE). A cursor holds the rows (one or more) returned by a SQL statement. The set of rows the cursor holds is referred to as the active set.[12]
-
-A cursor can be explicit or implicit. In a FOR loop, an explicit cursor shall be used if the query will be reused, otherwise an implicit cursor is preferred. If using a cursor inside a loop, use a FETCH is recommended when needing to bulk collect or when needing dynamic SQL.
-
 
 ### Iterative Statements
 ---
