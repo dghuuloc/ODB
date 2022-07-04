@@ -489,3 +489,30 @@ EXCEPTION
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('Error!');
 END;
+
+--------------------------------------------------------------------
+-- Trigger --
+--------------------------------------------------------------------
+
+CREATE OR REPLACE TRIGGER display_salary_changes
+BEFORE
+DELETE OR INSERT OR UPDATE
+ON customers
+FOR EACH ROW
+WHEN (NEW.id > 0)
+DECLARE 
+	sal_diff NUMBER;
+BEGIN
+	sal_diff := :NEW.salary - : OLD.salary;
+	DBMS_OUTPUT.PUT_LINE('Old salary: ' || :OLD.salary);
+	DBMS_OUTPUT.PUT_LINE('New salary: ' || :NEW.salary);
+	DBMS_OUTPUT.PUT_LINE('Salary Difference: ' || sal_diff);
+END;
+
+-- Triggering Trigger
+INSERT INTO customers (id, name, age, address, salary)
+VALUES (7, 'Kriti', 22, 'HP', 7500.00);
+
+UPDATE customers 
+SET salary = salary + 500
+WHERE id = 7;
