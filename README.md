@@ -367,6 +367,31 @@ PL/SQL can handle the following types of records -
 - Cursor-based records
 - User-defined records
 
+#### __User-Defined Records__
+
+PL/SQL provides a user-defined record type that allows you to define the different record structures.
+
+- ___Defining a Record___
+
+The record type is defined as -
+
+```
+TYPE type_name Is RECORD
+	(field_name1 datatype1 [NOT NULL] [:= DEFAULT EXPRESSION],
+	 field_name2 datatype2 [NOT NULL] [:= DEFAULT EXPRESSION],
+	 ...
+	 field_nameN datatypeN [NOT NULL] [:= DEFAULT EXPRESSION],
+	);
+record_name type_name;
+```
+- ___Accessing Fields___
+
+To access any field of a record, we use the dot (.) operator. The member access operator is coded as a period between the record variable name and the field that we wish to access.
+
+- ___Records as Subprogram Parameters___
+
+A record can be passed as a subprogram parameter just as you pass any other variable.
+
 ### Subprogram
 ---
 A subprogram can be invoked by another subprogram or program which is called the __calling program__.
