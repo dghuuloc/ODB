@@ -725,3 +725,70 @@ table_name type_name;
 This declaration is similar to the declaration of an index-by table, but there is no INDEX BY clause.
 
 A nested table can be stored in a database column. It can further be used for simplifying SQL operations where you join a single-column table with a larger table. An associative array cannot be stored in the database.
+
+### PL/SQL Object
+
+An object type allows you to create composite types. Using objects allow you to implement real world objects with specific structure of data and methods for operating it. Objects have attributes and methods. Attributes are properties of an object and are used for storing an object's state; and methods are used for modeling its behavior.
+
+Objects are creatted using the CREATE [OR REPLACE] TYPE statement.
+
+```
+CREATE OR REPLACE TYPE object_name AS OBJECT (
+	-- Declaring Attributes (String, Numeric, Object, ...)
+	-- Declaring Methods (Functions, Procedures, ...). Note that we use MEMBER keyword
+);[NOT FINAL | NOT INSTANTIABLE NOT FINAL]
+```
+
+The object body is created using the CREATE TYPE BODY statement.
+
+```
+CREATE OR REPLACE TYPE BODY object_name AS 
+	--- Defining the code for the menmber methods
+END;
+```
+
+#### __Instantianting an Object__
+
+Defining an object type provides a blueprint for the object. To use this object, you need to create instances of this object. 
+
+```
+instance_name object_name;
+```
+
+#### __Member Methods__
+
+Member methods are used for manipulating the attributes of the object. You provide the declaration of a member method while declaring the object type. The object body defines the code for the member methods. The object body is created using the CREATE TYPE BODY statement.
+
+___Constructors___ are functions that return a new object as its value. Every object has a system defined constructor method.
+
+- __Map Method__
+
+The Map method is a function implemented in such a way that its value depends upon the value of the attributes.
+
+- __Order Method__
+
+The Order method implements some internal logic for comparing two objects.
+
+#### __Inheritance for PL/SQL Objects__
+
+PL/SQL allows creating object from the existing base objects. To implement inheritance, the base objects should be declared as NOT FINAL. The default is FINAL.
+
+To inherite an existing Object, We can use UNDER keyword.
+
+```
+CREATE OR REPLACE child_object UNDER parent_object AS (
+	...
+);
+```
+
+#### __Abstract Objects in PL/SQL__
+
+The NOT INSTANTIABLE clause allows you to declare an abstract object. You cannot use an abstract object as it is; you will have to create a subtype or child type of such objects to use its functionalities.
+
+
+
+
+
+
+
+
