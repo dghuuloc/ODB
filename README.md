@@ -687,3 +687,41 @@ DROP PACKAGE [BODY] schema_name.package.name;
 If you want to drop only the body of the package, you need to specify the `BODY` keyword. If you omit the `BODY` keyword, then the statement drops both the body and specification of the package.
 
 Oracle does not invalidate dependent objects when you drop only the body of a package but not the package specification. However, you will not be able to call one of the procedures or function declared in the package specification till you recreate the package body.
+
+### PL/SQL Collections
+
+A collection is an ordered group of elements having the same data type. Each element is identified by a unique subscript that represents its position in the collection.
+
+PL/SQL provides three collection types -
+ - Index-by  tables or Associative array
+ - Nested table
+ - Variable-size array or Varray
+
+#### __Index-By Table__
+
+An index-by table (also called an associative array) is a set of __key-value__ pairs. Each key is unique and is used to locate the corresponding value. The key can be either an integer or a string.
+
+```
+TYPE type_name IS TABLE OF element_type [NOT NULL] INDEX BY subscript_type;
+
+table_name type_name;
+```
+
+#### __Nested Tables__
+
+A nested table is like a one-dimensional array with an arbitrary number of elements. However, a nested table differs from an array in the following aspects −
+
+- An array has a declared nunmber of element, but a nested table does not. The size of a nested table can increase dynamically
+- An array is always dense, i.e., it always has consecutive subscripts. A nested array is dense initially, but it can become sparse when elements are deleted from it.
+
+A nested table is created using the following syntax -
+
+```
+TYPE type_name IS TABLE OF element_type [NOT NULL];
+
+table_name type_name;
+```
+
+This declaration is similar to the declaration of an index-by table, but there is no INDEX BY clause.
+
+A nested table can be stored in a database column. It can further be used for simplifying SQL operations where you join a single-column table with a larger table. An associative array cannot be stored in the database.
