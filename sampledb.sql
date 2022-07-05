@@ -619,4 +619,74 @@ BEGIN
 	c_package.listCustomer;
 END;
 
+--------------------------------------------------------------------
+-- PL/SQL Collections--
+--------------------------------------------------------------------
 
+-- Index-By Table Example
+DECLARE
+	TYPE salary IS TABLE OF NUMBER INDEX BY VARCHAR2(20);
+	salary_list salary;
+	name VARCHAR2(20);
+BEGIN
+	-- adding elements to the table
+	salary_list('Rajnish') := 62000;
+	salary_list('Minakshi') := 75000;
+	salary_list('Martin') := 100000;
+	salary_list('James') := 78000;
+	
+	-- printing the table
+	name := salary_list.FIRST;
+	WHILE name IS NOT NULL LOOP
+		DBMS_OUTPUT.PUT_LINE('Salary of ' || name || ' is: ' || TO_CHAR(salary_list(name)));
+		name := salary_list.NEXT(name);
+	END LOOP;
+END;
+
+-- Element of Index-By table is also customers Databse Table
+DECLARE
+	CURSOR c_customers IS
+		SELECT name FROM customers;
+	TYPE c_list IS TABLE OF customers.name%TYPE INDEX BY BINARY_INTEGER;
+	name_list c_list;
+	counter INTEGER := 0;
+BEGIN
+	FOR n IN c_customers LOOP
+		counter := counter + 1;
+		name_list(counter) := n.name;
+		DBMS_OUTPUT.PUT_LINE('Customer(' || counter || '): ' || name_list(counter));
+	END LOOP;
+END;
+
+-- Nested Table in example
+DECLARE
+	TYPE names_table IS TABLE OF VARCHAR2(10);
+	TYPE grades IS TABLE OF INTEGER;
+	names names_table;
+	marks grades;
+	total INTEGER;
+BEGIN
+	names := names_table('Kavita', 'Pritam', 'Ayan', 'Rishav', 'Aziz');
+	marks := grades(98, 97, 78, 87, 92);
+	total := names.COUNT;
+	DBMS_OUTPUT.PUT_LINE('Total ' || total || ' Students');
+	FOR i IN 1..total LOOP
+		DBMS_OUTPUT.PUT_LINE('Student:' || names(i) || ', Marks: ' || marks(i));
+	END LOOP;
+END;
+
+-- Element of nested table is also customers Databse Table
+DECLARE
+	CURSOR c_customers IS
+		SELECT name FROM customers;
+	TYPE c_list IS TABLE OF customers.name%TYPE;
+	name_list c_list := c_list();
+	counter INTEGER := 0;
+BEGIN
+	FOR n IN c_customers LOOP
+		counter := counter + 1;
+		name_list.extend;
+		name_list(counter) := n.name;
+		DBMS_OUTPUT.PUT_LINE('Customer(' || counter || '): ' || name_list(counter));
+	END LOOP;
+END;
