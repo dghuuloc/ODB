@@ -18,4 +18,20 @@ CREATE OR REPLACE PACKAGE package_name AS
     
 END package_name;
 
+CREATE OR REPLACE PACKAGE BODY package_name AS
+    
+    FUNCTION function_name (list_variable) IS
+        -- declaration statements
+        BEGIN
+            -- executive statements
+        END function_name;
+    
+    
+    PROCEDURE procedure_name (list_variable) IS
+        -- declaration statements
+        BEGIN
+            -- executive statements
+        END procedure_name;
+END package_name;
+
 
