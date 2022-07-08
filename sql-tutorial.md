@@ -40,5 +40,14 @@ CREATE TABLE child_table (
 );
 ```
 
+### Check Constraint
+
+```
+CREATE TABLE table_name (
+
+column_name data_type CONSTRAINT check_constraint_name CHECK (expression)
+);
+```
+
 
 
