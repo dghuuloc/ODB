@@ -1,5 +1,13 @@
-## <p align="center">Oracle SQL Tutorial</p>
+# <p align="center">Oracle Database Intro to SQL</p>
 ---
+
+<p align="center"><img src="https://flexagon.com/wp-content/uploads/2022/05/Oracle-APEX_illustration-01.svg"/></p>
+
+---
+
+<!--## <img src="https://pdjmaster.files.wordpress.com/2020/04/oracle-database.png" width="80" height="80"> Introduction to Oracle Database -->
+
+## 💡 Introduction to SQL
 
 ### Primary Key
 ---
