@@ -9,12 +9,12 @@
 
 ## 💡 Introduction to SQL
 
-### Oracle SELECT Statement
+### SELECT Statement
 To retrieve data from one or more columns of a table, yuou use the `SELECT` statement with the following syntax:
 
 ```
 SELECT
-  column_lists
+  column_list
 FROM
   table_name;
 ```
@@ -24,6 +24,30 @@ In this `SELECT` statement:
 - Second, indicate the columns from which you want to return the data. If you have more than one column, you need to separate each by a comma (,).
 
 Note that the `SELECT` statement is very complex that consists of many clauses such as `ORDER BY`, `GROUP BY`, `HAVING`, `JOIN`. To make it simple, in this tutorial, we are focusing on the SELECT and FROM clauses only.
+
+### ORDER BY clause
+
+To sort dat in either ascending or descending order, we can add the `ORDER BY` clause to the `SELECT` statement as follows:
+
+```
+SELECT
+  column_list
+  ...
+FROM
+  table_name
+ORDER BY
+  column [ASC | DESC] [NULLS FIRST | NULLS LAST]
+```
+To sort the result set by a column, you list that column after the `ORDER BY` clause.
+
+Following the column name is a sort order that can be:
+
+- `ASC` for sorting in ascending order
+- `DESC` for sorting in descending order
+
+By default, the `ORDER BY` clause sorts rows in ascending order whether you specify `ASC` or not. If you want to sort rows in descending order, you use `DESC` explicitly.
+
+`NULLS FIRST` places NULL values before non-NULL values and `NULLS LAST` puts the NULL values after non-NULL values.
 
 ### Primary Key
 ---
