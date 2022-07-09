@@ -82,10 +82,41 @@ The `WHERE` clause appears after the `FROM` clause but before the `ORDER BY` cla
 
 Besides the `SELECT` statement, you can use the `WHERE` clause in the `DELETE` or `UPDATE` statement to specify which rows to update or delete.
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+### FETCH clause
+
+The following illustrates the syntax of the row limiting clause:
+
+```
+[ OFFSET offset ROWS]
+FETCH  NEXT [  row_count | percent PERCENT  ] ROWS  [ ONLY | WITH TIES ] 
+```
+
+__OFFSET clause__
+
+The OFFSET clause specifies the number of rows to skip before the row limiting starts. The OFFSET clause is optional. If you skip it, then offset is 0 and row limiting starts with the first row.
+
+The offset must be a number or an expression that evaluates to a number. The offset is subjected to the following rules:
+
+- If the offset is negative, then it is treated as 0.
+- If the offset is NULL or greater than the number of rows returned by the query, then no row is returned.
+- If the offset includes a fraction, then the fractional portion is truncated.
+
+__FETCH clause__
+
+The FETCH clause specifies the number of rows or percentage of rows to return.
+
+For the semantic clarity purpose, you can use the keyword ROW instead of ROWS, FIRST instead of  NEXT. For example, the following clauses behavior the same
+
+```
+FETCH NEXT 1 ROWS
+FETCH FIRST 1 ROW
+```
+
+__ONLY|WITH TIES__
+
+The ONLY returns exactly the number of rows or percentage of rows after FETCH NEXT (or FIRST).
+
+The WITH TIES returns additional rows with the same sort key as the last row fetched. Note that if you use WITH TIES, you must specify an ORDER BY clause in the query. If you don’t, the query will not return the additional rows.
 
 ### Primary Key
 ---
@@ -105,7 +136,6 @@ CREATE TABLE table_name (
 );
 
 ```
-
 
 ### Foreign key
 
@@ -134,6 +164,14 @@ CREATE TABLE table_name (
 
 column_name data_type CONSTRAINT check_constraint_name CHECK (expression)
 );
+```
+
+### Built-in Functions
+
+- __EXTRACT()__ function to get the `YEAR` field from the order date and compare it with 2017.
+
+```
+EXTRACT(YEAR FROM order_date) = 2017
 ```
 
 ## References
