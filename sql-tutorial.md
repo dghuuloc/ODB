@@ -9,6 +9,22 @@
 
 ## 💡 Introduction to SQL
 
+### Oracle SELECT Statement
+To retrieve data from one or more columns of a table, yuou use the `SELECT` statement with the following syntax:
+
+```
+SELECT
+  column_lists
+FROM
+  table_name;
+```
+In this `SELECT` statement:
+
+- First, specify the table name from which you want to query the data.
+- Second, indicate the columns from which you want to return the data. If you have more than one column, you need to separate each by a comma (,).
+
+Note that the `SELECT` statement is very complex that consists of many clauses such as `ORDER BY`, `GROUP BY`, `HAVING`, `JOIN`. To make it simple, in this tutorial, we are focusing on the SELECT and FROM clauses only.
+
 ### Primary Key
 ---
 
