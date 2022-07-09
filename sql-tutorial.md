@@ -49,6 +49,17 @@ By default, the `ORDER BY` clause sorts rows in ascending order whether you spec
 
 `NULLS FIRST` places NULL values before non-NULL values and `NULLS LAST` puts the NULL values after non-NULL values.
 
+### SELECT DISTINCT statement
+
+The `DISTINCT` clause is used in a `SELECT` statement to filter duplicate rows in the result set. It ensures that rows returned are unique for the column or columns specified in the `SELECT` clause.
+
+The following illustrates the syntax of the `SELECT DISTINCT` statement:
+
+```
+SELECT DISTRINCT column_list
+FROM table_name;
+```
+
 ### Primary Key
 ---
 
