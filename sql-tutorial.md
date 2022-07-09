@@ -68,4 +68,5 @@ column_name data_type CONSTRAINT check_constraint_name CHECK (expression)
 - [SQL Tutorials](https://www.zentut.com/sql-tutorial/)
 - [SQL Interview Questions](https://www.interviewbit.com/sql-interview-questions/)
 - [Othes](https://www.w3resource.com/sql/tutorials.php)
+- [Basic SQL Commands](https://www.freecodecamp.org/news/basic-sql-commands/)
 
