@@ -58,5 +58,14 @@ column_name data_type CONSTRAINT check_constraint_name CHECK (expression)
 );
 ```
 
+## References
 
+- [Oracle Basic](https://www.oracletutorial.com/oracle-basics/)
+- [Getting Started Oracle SQL Tutorial](https://way2tutorial.com/sql/tutorial.php)
+- [totn SQL](https://www.techonthenet.com/sql/index.php)
+- [Oracle Tutorials ](https://www.w3schools.blog/oracle-tutorial)
+- [Oracle Tutorials](https://www.wikitechy.com/tutorials/oracle/)
+- [SQL Tutorials](https://www.zentut.com/sql-tutorial/)
+- [SQL Interview Questions](https://www.interviewbit.com/sql-interview-questions/)
+- [Othes](https://www.w3resource.com/sql/tutorials.php)
 
