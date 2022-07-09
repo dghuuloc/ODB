@@ -10,6 +10,7 @@
 ## 💡 Introduction to SQL
 
 ### SELECT Statement
+---
 To retrieve data from one or more columns of a table, yuou use the `SELECT` statement with the following syntax:
 
 ```
@@ -26,6 +27,7 @@ In this `SELECT` statement:
 Note that the `SELECT` statement is very complex that consists of many clauses such as `ORDER BY`, `GROUP BY`, `HAVING`, `JOIN`. To make it simple, in this tutorial, we are focusing on the SELECT and FROM clauses only.
 
 ### ORDER BY clause
+---
 
 To sort dat in either ascending or descending order, we can add the `ORDER BY` clause to the `SELECT` statement as follows:
 
@@ -50,6 +52,7 @@ By default, the `ORDER BY` clause sorts rows in ascending order whether you spec
 `NULLS FIRST` places NULL values before non-NULL values and `NULLS LAST` puts the NULL values after non-NULL values.
 
 ### SELECT DISTINCT statement
+---
 
 The `DISTINCT` clause is used in a `SELECT` statement to filter duplicate rows in the result set. It ensures that rows returned are unique for the column or columns specified in the `SELECT` clause.
 
@@ -59,6 +62,25 @@ The following illustrates the syntax of the `SELECT DISTINCT` statement:
 SELECT DISTRINCT column_list
 FROM table_name;
 ```
+
+### WHERE clause
+
+The WHERE clause specifies a search condition for rows returned by the `SELECT` statement. The following illustrates the syntax of the `WHERE` clause:
+
+```
+SELECT 
+  select_list
+FROM
+  table_name
+WHERE
+  search_condition
+ORDER BY
+  sort_expression;
+```
+
+The `WHERE` clause appears after the `FROM` clause but before the `ORDER BY` clause. Following the `WHERE` keyword is the search_condition that defines a condition that returned rows must satisfy.
+
+Besides the `SELECT` statement, you can use the `WHERE` clause in the `DELETE` or `UPDATE` statement to specify which rows to update or delete.
 
 ### Primary Key
 ---
