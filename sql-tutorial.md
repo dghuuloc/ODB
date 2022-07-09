@@ -64,6 +64,7 @@ FROM table_name;
 ```
 
 ### WHERE clause
+---
 
 The WHERE clause specifies a search condition for rows returned by the `SELECT` statement. The following illustrates the syntax of the `WHERE` clause:
 
@@ -83,6 +84,7 @@ The `WHERE` clause appears after the `FROM` clause but before the `ORDER BY` cla
 Besides the `SELECT` statement, you can use the `WHERE` clause in the `DELETE` or `UPDATE` statement to specify which rows to update or delete.
 
 ### FETCH clause
+---
 
 The following illustrates the syntax of the row limiting clause:
 
