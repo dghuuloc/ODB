@@ -82,6 +82,11 @@ The `WHERE` clause appears after the `FROM` clause but before the `ORDER BY` cla
 
 Besides the `SELECT` statement, you can use the `WHERE` clause in the `DELETE` or `UPDATE` statement to specify which rows to update or delete.
 
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
 ### Primary Key
 ---
 
