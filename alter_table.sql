@@ -224,3 +224,55 @@ ALTER TABLE suppliers
 
 
 DROP TABLE suppliers;
+
+--------------------------------------------------------------------
+-- Using persons table for DROP TABLE in details --
+--------------------------------------------------------------------
+
+-- Create persons table
+CREATE TABLE persons (
+    person_id NUMBER,
+    first_name VARCHAR2(50) NOT NULL,
+    last_name VARCHAR2(50) NOT NULL,
+    PRIMARY KEY(person_id)
+);
+
+DROP TABLE persons;
+
+-- Oracle DROP TABLE CASCDE CONSTRAINTS exmaple
+CREATE TABLE brands( 
+    brand_id NUMBER PRIMARY KEY,
+    brand_name VARCHAR2(50)
+);
+
+CREATE TABLE cars (
+    car_id NUMBER PRIMARY KEY,
+    make  VARCHAR2(50) NOT NULL,
+    model VARCHAR2(50) NOT NULL,
+    year NUMBER NOT NULL,
+    plate_nuamber VARCHAR(25),
+    brand_id NUMBER NOT NULL,
+    
+    CONSTRAINT fk_brand
+        FOREIGN KEY (brand_id)
+        REFERENCES brands(brand_id) ON DELETE CASCADE
+);
+
+SELECT * FROM CARS;
+
+
+-- ORACLE DROP multiple TABLE PURGE example
+BEGIN
+  FOR rec IN
+    (
+      SELECT
+        table_name
+      FROM
+        all_tables
+      WHERE
+        table_name LIKE 'TEST_%'
+    )
+  LOOP
+    EXECUTE immediate 'DROP TABLE  '||rec.table_name || ' CASCADE CONSTRAINTS';
+  END LOOP;
+END;
