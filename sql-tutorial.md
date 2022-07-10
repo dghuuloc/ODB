@@ -186,6 +186,17 @@ HAVING
 > **_NOTE:_**  The `HAVING` clause filters groups of rows while the `WHERE` clause filers rows.
 
 
+### Data Manipulation Language (DML)
+
+#### __INSERT Statement__
+
+To insert a new row into a tablem you use the Oracle `INSERT` statement as follows:
+
+```
+INSERT INTO table_name (column_list)
+  VALUES (value_list);
+```
+
 
 ### The order of executionfor SQL query
 
