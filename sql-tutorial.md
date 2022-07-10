@@ -169,6 +169,16 @@ column_name data_type CONSTRAINT check_constraint_name CHECK (expression)
 ```
 
 ### The order of executionfor SQL query
+
+__Query Process Steps__
+
+- Getting Data (_FROM, JOIN_)
+- Row Filter (_WHERE_)
+- Grouping (_GROUP BY_)
+- Group Filter (_HAVING_)
+- Retrun Expressions (_SELECT_)
+- Order & Paging (_ORDER BY & LIMIT/OFFSET_)
+
 ```
 SELECT [DISTINCT] <select_list>
 FROM <left_table>
