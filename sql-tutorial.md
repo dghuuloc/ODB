@@ -168,7 +168,19 @@ column_name data_type CONSTRAINT check_constraint_name CHECK (expression)
 );
 ```
 
-### Built-in Functions
+### The order of executionfor SQL query
+```
+SELECT [DISTINCT] <select_list>
+FROM <left_table>
+<join_type> JOIN <right_table>
+ON <join_condition>
+WHERE <where_condition>
+GROUP BY <group_by_list>
+HAVING <having_condition>
+ORDER BY <order_by_list> [ASC/DESC];
+```
+
+### Aggregate Functions
 
 - __EXTRACT()__ function to get the `YEAR` field from the order date and compare it with 2017.
 
