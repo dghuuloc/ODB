@@ -197,6 +197,18 @@ INSERT INTO table_name (column_list)
   VALUES (value_list);
 ```
 
+#### __INSERT INTO SELECT__
+
+Sometimes, you waant to select data from a table and insert it into another table. To do it, you use the Oracle INSERT INTO SELECT statement as follows:
+
+```
+INSERT INTO target_table (column_list)
+SELECT column_list
+FROM source_table
+WHERE condition;
+```
+
+The Oracle INSERT INTO SELECTstatement requires the data type of the source and target tables match.
 
 ### The order of executionfor SQL query
 
