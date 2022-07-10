@@ -168,6 +168,25 @@ column_name data_type CONSTRAINT check_constraint_name CHECK (expression)
 );
 ```
 
+### HAVING clause
+
+The following illustrates the syntax of the Oracle `HAVING` clause:
+
+```
+SEELCT 
+  column_list
+FROM
+  table_name
+GROUP BY
+  column_name
+HAVING
+  group_condition;
+```
+
+> **_NOTE:_**  The `HAVING` clause filters groups of rows while the `WHERE` clause filers rows.
+
+
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
