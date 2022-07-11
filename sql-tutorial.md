@@ -307,6 +307,20 @@ CROSS JOIN right_table
 
 > **_NOTE THAT:_**  Unlinke other joins such as `INNER JOIN` or `LEFT JOIN`, `CROSS JOIN` does not have the `ON` clause with a join predicate.
 
+#### __SEFT JOIN__
+
+A self join is a join that joins a table with itself. A self join is useful for comparing rows within a table or querying hierarchical data.
+
+A self join uses other joins such as inner join and left join. In addition, it uses the table alias to assign the table different names in the same query.
+
+```
+SELECT
+  column_list
+FROM
+  table_name alias_1
+INNER JOIN  table_name alias_2 ON join_predicate;
+```
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
