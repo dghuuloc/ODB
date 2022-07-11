@@ -346,6 +346,59 @@ The subquery that uses the `IN` operator often returns a list of zero or more va
 
 The EXISTS operator returns true if the subquery returns any rows, otherwise, it returns false. In addition, the EXISTS operator terminates the processing of the subquery once the subquery returns the first row.
 
+### Oracle ANY operator
+
+```
+SELECT
+    *
+FROM
+    table_name
+WHERE
+    c > ANY (
+        v1,
+        v2,
+        v3
+    );
+
+-- transform the ANY operator
+
+SELECT
+    *
+FROM
+    table_name
+WHERE
+    c > v1
+    OR c > v2
+    OR c > v3;
+
+```
+
+### Oracle ALL operator
+
+```
+SELECT
+    *
+FROM
+    table_name
+WHERE
+    c > ALL (
+        v1,
+        v2,
+        v3
+    );
+
+--  transform the ALL operator
+
+SELECT
+    *
+FROM
+    table_name
+WHERE
+    c > v1
+    AND c > v2
+    AND c > v3;
+
+```
 
 ### The order of executionfor SQL query
 
