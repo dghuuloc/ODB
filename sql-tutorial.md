@@ -210,6 +210,12 @@ WHERE condition;
 
 The Oracle INSERT INTO SELECTstatement requires the data type of the source and target tables match.
 
+### Oracle JOIN
+
+Oracle join is used to combine columns from two or more tables based on values of the related columns.
+
+Oracle supports `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL OUTER JOIN` and `CROSS JOIN`.
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
