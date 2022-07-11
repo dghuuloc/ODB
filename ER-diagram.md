@@ -8,3 +8,4 @@
 
 - [What is an Entity Relationship Diagram (ERD)?](https://www.lucidchart.com/pages/er-diagrams)
 - [ER Diagram Symbols and Notations](https://www.edrawsoft.com/er-diagram-symbols.html)
+- [ER Diagram tutorial](https://www.guru99.com/er-diagram-tutorial-dbms.html)
