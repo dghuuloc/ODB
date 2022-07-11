@@ -225,6 +225,15 @@ FROM
   lef_table
 INNER JOIN right_table ON join_predicate;
 ```
+__USING keyword__
+
+```
+SELECT 
+  *
+FROM
+  lef_table
+INNER JOIN right_table USING (column_list);
+```
 
 ### The order of executionfor SQL query
 
