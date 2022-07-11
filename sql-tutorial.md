@@ -295,6 +295,18 @@ FULL OUTER JOIN right_table ON join_condition;
 
 > **_NOTE THAT:_**  the `OUTER` keyword is optional, therefore, the `FULL OUTER JOIN` and `FULL JOIN` are the same. 
 
+#### __CROSS JOIN__
+
+```
+SELECT
+  column_list
+FROM
+  left_table
+CROSS JOIN right_table
+```
+
+> **_NOTE THAT:_**  Unlinke other joins such as `INNER JOIN` or `LEFT JOIN`, `CROSS JOIN` does not have the `ON` clause with a join predicate.
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
