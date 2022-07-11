@@ -90,7 +90,7 @@ The following illustrates the syntax of the row limiting clause:
 
 ```
 [ OFFSET offset ROWS]
-FETCH  NEXT [  row_count | percent PERCENT  ] ROWS  [ ONLY | WITH TIES ] 
+FETCH NEXT [row_count | percent PERCENT] ROWS [ONLY | WITH TIES] 
 ```
 
 __OFFSET clause__
@@ -114,7 +114,7 @@ FETCH NEXT 1 ROWS
 FETCH FIRST 1 ROW
 ```
 
-__ONLY|WITH TIES__
+__ONLY | WITH TIES__
 
 The ONLY returns exactly the number of rows or percentage of rows after FETCH NEXT (or FIRST).
 
