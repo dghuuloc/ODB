@@ -318,7 +318,7 @@ SELECT
   column_list
 FROM
   table_name alias_1
-INNER JOIN  table_name alias_2 ON join_predicate;
+<type_join> JOIN  table_name alias_2 ON join_predicate;
 ```
 
 ### The order of executionfor SQL query
