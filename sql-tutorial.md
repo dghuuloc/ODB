@@ -260,6 +260,29 @@ FROM
 LEFT JOIN right_table USING (column_1, column_2, column_3,...);
 ```
 
+#### __RIGHT JOIN__
+
+```
+SELECT 
+  column_list
+FROM
+  left_table
+RIGHT JOIN right_table ON 
+  left_table.column_1 = right_table.column_1
+  AND left_table.column_2 = right_table.column_2
+  AND left_table.column_3 = right_table.column_3
+  AND ...;
+```
+
+- __RIGHT JOIN __ with USING clause
+```
+SELECT 
+  column_list
+FROM
+  left_table
+RIGHT JOIN right_table USING (column_1, column_2, column_3,...);
+```
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
