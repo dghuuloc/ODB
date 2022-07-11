@@ -283,6 +283,18 @@ FROM
 RIGHT JOIN right_table USING (column_1, column_2, column_3,...);
 ```
 
+#### __FULL OUTER JOIN__
+
+```
+SELECT
+    select_list
+FROM
+    left_table
+FULL OUTER JOIN right_table ON join_condition;
+```
+
+> **_NOTE THAT:_**  the `OUTER` keyword is optional, therefore, the `FULL OUTER JOIN` and `FULL JOIN` are the same. 
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
