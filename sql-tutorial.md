@@ -216,6 +216,16 @@ Oracle join is used to combine columns from two or more tables based on values o
 
 Oracle supports `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL OUTER JOIN` and `CROSS JOIN`.
 
+#### __INNER JOIN__
+
+```
+SELECT 
+  *
+FROM
+  lef_table
+INNER JOIN right_table ON join_predicate;
+```
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
