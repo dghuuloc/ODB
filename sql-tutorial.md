@@ -225,7 +225,7 @@ FROM
   lef_table
 INNER JOIN right_table ON join_predicate;
 ```
-__USING keyword__
+- __INNER JOIN__ with USING clause
 
 ```
 SELECT 
@@ -251,7 +251,7 @@ LEFT JOIN right_table ON
   AND ...;
 ```
 
-- __LEFT JOIN __ with USING clause
+- __LEFT JOIN__ with USING clause
 ```
 SELECT 
   column_list
@@ -274,7 +274,7 @@ RIGHT JOIN right_table ON
   AND ...;
 ```
 
-- __RIGHT JOIN __ with USING clause
+- __RIGHT JOIN__ with USING clause
 ```
 SELECT 
   column_list
