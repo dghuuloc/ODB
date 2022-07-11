@@ -321,6 +321,32 @@ FROM
 <type_join> JOIN  table_name alias_2 ON join_predicate;
 ```
 
+### Subquery
+
+#### __Subquery in the SELECT clause__
+
+
+
+#### __Subquery in the FROM cluse__
+
+```
+SELECT * FROM (subquery) [AS] inline_view;
+```
+
+#### __Subquery with comparison operators__
+
+#### __Subquery with IN and NOT IN operators__
+
+The subquery that uses the `IN` operator often returns a list of zero or more values. After the subquery returns the result set, the outer query makes uses of them.
+
+
+### Oracle EXISTS operator
+
+#### EXISTS operator
+
+The EXISTS operator returns true if the subquery returns any rows, otherwise, it returns false. In addition, the EXISTS operator terminates the processing of the subquery once the subquery returns the first row.
+
+
 ### The order of executionfor SQL query
 
 __Query Process Steps__
