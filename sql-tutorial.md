@@ -9,6 +9,19 @@
 
 ## 💡 Introduction to SQL
 
+### Command Description
+Here are some commads that we will be learning about, and later practicing as well.
+
+- `CREATE` - Creates anew table, a view of atable, or another object in the database.
+- `ALTER` - Modifies an existing database object, such as a table. 
+- `DROP` - Deletes an entire table, a view of a table or other objects in the database.
+- `SELECT` - Retrieves certain records from one or more tables.
+- `INSERT` - Creates a record.
+- `UPDATE` - Modifies a record.
+- `DELETE` - Deletes a record.
+- `GRANT` - Gives a privilege to users
+- `REVOKE` - Takes back privileges granted from users.
+
 ### SELECT Statement
 ---
 To retrieve data from one or more columns of a table, yuou use the `SELECT` statement with the following syntax:
