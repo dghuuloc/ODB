@@ -9,6 +9,21 @@
 
 ## 💡 Introduction to SQL
 
+### What is Table?
+A table consists of rows and columns used to organize data to store and display records in a structured format. It is similar to worksheets in the spreadsheet application. It occupies space on our systems. We need three things to create a table:
+
+- Table name
+- Columns/Fields name
+- Definitions for each field
+
+<p align="center"><img src="https://www.w3resource.com/w3r_images/component-of-a-database-table.gif"/></p>
+
+- `fields [columns]` - The information of a table stored in some heads, those are fields or columns. Columns show vertically in a table.
+- `column name` - Each field or column has an individual name. A table cannot contain the same name of two different columns.
+- `record [row]` - All the columns in a table make a row. Each row contains all the information of individual topics.
+- `column value` - The value of each field makes a row is the column value.
+- `key field` - Each table should contain a field which can create a link with another one or more table is the key field of a table.
+
 ### Command Description
 Here are some commads that we will be learning about, and later practicing as well.
 
