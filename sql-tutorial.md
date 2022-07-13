@@ -18,6 +18,8 @@ A table consists of rows and columns used to organize data to store and displa
 
 <p align="center"><img src="https://www.w3resource.com/w3r_images/component-of-a-database-table.gif"/></p>
 
+__The component of table__
+
 - `fields [columns]` - The information of a table stored in some heads, those are fields or columns. Columns show vertically in a table.
 - `column name` - Each field or column has an individual name. A table cannot contain the same name of two different columns.
 - `record [row]` - All the columns in a table make a row. Each row contains all the information of individual topics.
