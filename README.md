@@ -644,13 +644,15 @@ A package specification contains the following intems:
 To create a new packages specifications, we can use the `CREATE PACKAGE` statement
 
 ```
-CREATE [OR REPLACE] PACKAGE [schema_name.] package_name
+CREATE [OR REPLACE] PACKAGE [schema_name.]<package_name>
 IS | AS
-	declarations;
-END package_name;
+	-- declarations of variables and type;
+	-- declarations of cursors;
+	-- declarations of modules;
+END [<package_name>];
 ```
 
-In thgis syntax, between the `AS` and `END` keywords, you declare the public items of the package specifiction.
+In this syntax, between the `AS` and `END` keywords, you declare the public items of the package specifiction.
 
 To refer to an item using the following syntax:
 
@@ -662,13 +664,17 @@ package_name.item_name
 To create a package body, we use the `CREATE PACKAGE BODY` as shown below:
 
 ```
-CREATE [OR REPLACE] PACKAGE BODY [schema_name.] package_name 
+CREATE [OR REPLACE] PACKAGE BODY [schema_name.]<package_name> 
 IS | AS
-
-[BEGIN
-EXCEPTION]
-END package_name;
+	-- declarations of variables and types
+	-- specification and SELECT statement of cursors
+	-- specification and body of modules
+	
+[BEGIN executable statements]
+[EXCEPTION exception handlers]
+END [<package_name>];
 ```
+
 Between the `AS` and `ENd` keywords are the declarations of private items and the implementations of the public items declared in the package specification.. Note that we can use either `IS` or `AS` keyword.
 
 Calling functions from a package
