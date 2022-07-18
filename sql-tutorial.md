@@ -452,6 +452,8 @@ HAVING <having_condition>
 ORDER BY <order_by_list> [ASC/DESC];
 ```
 
+Note that the `HAVING` clause filters groups of rows while the `WHERE` clause filters rows. If you use the `HAVING` clause without the `GROUP BY` clause, the `HAVING` clause works like the `WHERE` clause.
+
 ### Aggregate Functions
 
 - __EXTRACT()__ function to get the `YEAR` field from the order date and compare it with 2017.
