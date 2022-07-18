@@ -1,18 +1,19 @@
-## <p align="center"> PL/SQL Training Certification </p>
+# <p align="center"> PL/SQL Training Certification </p>
 
+<p><img src="https://brightsec.com/wp-content/uploads/2022/02/SQL-Injection-in-Oracle.png"/></p>
 
-### Introduction to PL/SQL
+## Introduction to PL/SQL
 ---
 
-#### What is PL/SQL?
+### What is PL/SQL?
 
 PL/SQL is a block structured language. The programs of PL/SQL are logical block that contains any number of nested sub-blocks. Pl/SQL stands for "Procedural Language extension of SQL" that is used in Oracle. PL/SQL is integrated with Oracle database
 
-#### PL/SQL Functionalities
+### PL/SQL Functionalities
 
 PL/SQL includes procedural language elements like conditions statements and iterative statements, arrays, string, handling exception (runtime errors), collections, records. It allows declaration of constants and variables, procedures and functions, types and variable of those types and triggers.
 
-### How to declare variable in PL/SQL
+## How to declare variable in PL/SQL
 
 You must declare the PL/SQL variable in the declaration section or in a package as a global variable. After the declaration, PL/SQL allocates memory for the variable's value and the storage location is indeitified by the variable name.
 
@@ -22,7 +23,7 @@ __The syntax for declaring variable:__
 variable_name [CONSTANT] datatype [NOT NULL] [:= | DEFAULT initial_value];
 ```
 
-#### Variable Scope in PL/SQL
+### Variable Scope in PL/SQL
 
 PL/SQL allows the nesting of blocks, i.e., each program block may contain another inner block. If a variable is declared within an inner block, it is not accessible to the outer block. However, if a variable is declared and accessible to an outer block, it is also accessible to all nested inner blocks. There are two types of variable scope −
 
@@ -53,7 +54,7 @@ BEGIN
 END;
 ```
 
-### Data Types
+## Data Types
 ---
 
 The major datatypes in PL/SQL include NUMBER, CHAR, VARCHAR2, DATE and TIMESTAMP.
@@ -152,7 +153,7 @@ Programmer can address individual attributes in such a structure by means of the
 v_address.street := 'High Street';
 ```
 
-### Conditional Statement
+## Conditional Statement
 ---
 
 The following code segment shows the __IF-THEN-ELSID-ELSE__ construct.
@@ -195,11 +196,11 @@ CASE variable
 END CASE;
 ```
 
-### Array Handling
+## Array Handling
 
  A varray is used to store an ordered collection of data, however it is often better to think of an array as a collection of variables of the same type.
  
-#### Creating a VARRAY at the schema level
+### Creating a VARRAY at the schema level
 
 ```
 CREATE OR REPLACE TYPE varray_type_name IS | AS VARRAY(n) OF <element_type>;
@@ -216,7 +217,7 @@ For example,
 ```
 CREATE OR REPLACE TYPE namearray AS VARRAY(3) OF VARCHAR2(10);
 ```
-#### Creating a VARRAY type within a PL/SQL block
+### Creating a VARRAY type within a PL/SQL block
 
 ```
 TYPE varray_name IS | AS VARRAY(n) OF <element-type>;
@@ -228,18 +229,18 @@ TYPE namearray IS VARRAY(5) OF VARCHAR2(10);
 TYPE grades IS VARRAY(5) OF INTEGER;
 ```
 
-#### Associative arrays (index-by tables)
+### Associative arrays (index-by tables)
 
-#### Nested Tables
+### Nested Tables
 
-#### Varrays (Variable-size arrays)
+### Varrays (Variable-size arrays)
 
-### Iterative Statements
+## Iterative Statements
 ---
 
 As a procedural language by definition, PL/SQL provides several iteration constructs, including basic LOOP statements, WHILE loops, FOR loops, and Cursor FOR loops.
 
-#### LOOP Statements
+### LOOP Statements
 
 ```
 <<parent_loop>>
@@ -261,7 +262,7 @@ LOOP
 END LOOP parent_loop;
 ```
 
-#### FOR loops
+### FOR loops
 
 ```
 DECLARE
@@ -281,7 +282,7 @@ BEGIN
 END;
 ```
 
-#### Cursor FOR loops
+### Cursor FOR loops
 
 ```
 FOR RecordIndex IN
@@ -308,13 +309,13 @@ BEGIN
   END LOOP;
 END
 ```
-Teh concept of the person_code within the FOR-loop gets expressed with dot-notation (".")
+The concept of the person_code within the FOR-loop gets expressed with dot-notation (".")
 
 ```
 RecordIndex.person_code
 ```
 
-### PL/SQL Cursors
+## PL/SQL Cursors
 ---
 
 Oracle creates a memory area, known as the context area, for processing an SQL statement, which contains all the information needed for processing the statement; for example, the number of rows processed, etc.
@@ -325,7 +326,7 @@ There are two types of cursors −
 - Implicit cursors
 - Explicit cursors
 
-#### ___Implicit Cursors___
+### ___Implicit Cursors___
 
 Implicit cursors are automatically created by Oracle whenever an SQL statement is executed, when there is no explicit cursor for the statement. Programmers cannot control the implicit cursors and the information in it.
 
@@ -333,7 +334,7 @@ Whenever a DML statement (INSERT, UPDATE and DELETE) is issued, an implicit curs
 
 In PL/SQL, you can refer to the most recent implicit cursor as the SQL cursor, which always has attributes such as %FOUND, %ISOPEN, %NOTFOUND, and %ROWCOUNT. The SQL cursor has additional attributes, %BULK_ROWCOUNT and %BULK_EXCEPTIONS, designed for use with the FORALL statement.
 
-#### ___Explicit Cursors___
+### ___Explicit Cursors___
 
 Explicit cursors are programmer-defined cursors for gaining more control over the context area. An explicit cursor should be defined in the declaration section of the PL/SQL Block. It is created on a SELECT Statement which returns more than one row.
 
@@ -358,7 +359,7 @@ __Fetching the Cursor__ - Fetching the cursor involves accessing one row at a ti
 
 __Closing the Cursor__ - closing the cursor means releasing the allocated memory.
 
-### PL/SQL Records
+## PL/SQL Records
 
 A __record__ is a data structure that can hold data items of different kinds. Records consist of different fields, similar to a row of a database table.
 
@@ -367,7 +368,7 @@ PL/SQL can handle the following types of records -
 - Cursor-based records
 - User-defined records
 
-#### __User-Defined Records__
+### __User-Defined Records__
 
 PL/SQL provides a user-defined record type that allows you to define the different record structures.
 
@@ -392,7 +393,7 @@ To access any field of a record, we use the dot (.) operator. The member access 
 
 A record can be passed as a subprogram parameter just as you pass any other variable.
 
-### PL/SQL Exception Handling
+## PL/SQL Exception Handling
 
 There are two types of exceptions −
 
@@ -442,7 +443,7 @@ DECLARE
 my_exception EXCEPTION;
 ```
 
-### PL/SQL Triggers
+## PL/SQL Triggers
 
 Triggers are stored programs, which are automatically executed or fired when some events occur. Triggers are, in fact, written to be executed in response to any of the following events −
 
@@ -450,7 +451,7 @@ Triggers are stored programs, which are automatically executed or fired when som
 - A database definition (DDL) statement (CREATE, ALTER, or DROP)
 - A databse operation (SERVERERROR, LOGON, LOGOFF, STARTUP, or SHUTDOWN).
 
-#### Creating Triggers
+### Creating Triggers
 ---
 
 ```
@@ -489,7 +490,7 @@ Where,
 
 - WHEN (condition) − This provides a condition for rows for which the trigger would fire. This clause is valid only for row-level triggers.
 
-### Subprogram
+## Subprogram
 ---
 A subprogram can be invoked by another subprogram or program which is called the __calling program__.
 
@@ -502,7 +503,7 @@ PL/SQL provides two kinds of subprograms -
 - __Function__ - These subprograms return a single value; mainly used to compute and return a value.
 - __Procedure__ − These subprograms do not return a value directly; mainly used to perform an action.
 
-#### Methods for Passing Parameters
+### Methods for Passing Parameters
 
 - __Positional Notation__
 In positional notation, the first actual parameter is substituted for the first formal parameter; the second actual parameter is substituted for the second formal parameter, and so on.
@@ -530,10 +531,10 @@ or
 findMin(x => a, b, c, d);
 ```
 
-### PL/SQL Stored Procedure
+## PL/SQL Stored Procedure
 ---
 
-#### Syntax for creating procedure:
+### Syntax for creating procedure:
 
 ```
 CREATE [OR REPLACE] PROCEDURE procedure_name [(parameter_name [IN | OUT | INOUT] data_type [, ...])]
@@ -548,7 +549,7 @@ EXCEPTION -- Exception-handling part (optional)
 END [procedure_name]; -- End of executable part (required)
 ```
 
-#### Executing a PL/SQL Procedure
+### Executing a PL/SQL Procedure
 
 We can call procedure using PL/SQL  anonymous block.
 
@@ -565,16 +566,16 @@ Also, the following shows the syntax for executing a procedure:
 EXECUTE procedure_name(arguments);
 ```
 
-#### Drop procedure syntax
+### Drop procedure syntax
 
 ```
 DROP PROCEDURE procedure_name;
 ```
 
-### PL/SQL Function
+## PL/SQL Function
 ---
 
-#### Creating a PL/SQL Function
+### Creating a PL/SQL Function
 
 ```
 CREATE [OR REPLACE] FUNCTION function_name [(parameter_name [IN |OUT | INOUT] data_type [, ...])]
@@ -599,7 +600,7 @@ Where,
 - function-body contains the executable part.
 - The AS keyword is used instead of the IS keyword for creating a standalone function.
 
-#### Calling a PL/SQL Function
+### Calling a PL/SQL Function
 
 To call a function, you simply need to pass the required parameters along with the function name and if the function returns a value, then you can store the returned value.
 
@@ -610,7 +611,7 @@ BEGIN
 END;
 ```
 
-#### Removing a function
+### Removing a function
 
 The `DROP FUNCTION` deletes a function from the Oracle Database. The syntax for removing a function is straightforward:
 
@@ -618,9 +619,9 @@ The `DROP FUNCTION` deletes a function from the Oracle Database. The syntax for 
 DROP FUNCTION  function_name;
 ```
 
-### PL/SQL Package
+## PL/SQL Package
 ---
-#### What is a PL/SQL package?
+### What is a PL/SQL package?
 
 In PL/SQL, a package is a schema object that contains definitions for a group of ralated functionalities. A package include `variables, constants, cursors, exceptions, procedures, functions,  and subprograms`. It is compiled and stored in the Oracle Database.
 
@@ -630,7 +631,7 @@ The following picture illustrates PL/SQL packages:
 
 <p align="center"><img src="https://www.oracletutorial.com/wp-content/uploads/2017/12/plsql-package.jpg" /></p>
 
-#### Package Specification
+### Package Specification
 
 A package specification contains the following intems:
 
@@ -659,7 +660,7 @@ To refer to an item using the following syntax:
 ```
 package_name.item_name
 ```
-#### Package body
+### Package body
 
 To create a package body, we use the `CREATE PACKAGE BODY` as shown below:
 
@@ -683,7 +684,7 @@ Calling functions from a package
 package_name.function_name(arguments)
 ```
 
-#### Drop Package
+### Drop Package
 
 To drop a package, you use the `drop package` statement with the following syntax:
 
@@ -694,7 +695,7 @@ If you want to drop only the body of the package, you need to specify the `BODY`
 
 Oracle does not invalidate dependent objects when you drop only the body of a package but not the package specification. However, you will not be able to call one of the procedures or function declared in the package specification till you recreate the package body.
 
-### PL/SQL Collections
+## PL/SQL Collections
 
 A collection is an ordered group of elements having the same data type. Each element is identified by a unique subscript that represents its position in the collection.
 
@@ -703,7 +704,7 @@ PL/SQL provides three collection types -
  - Nested table
  - Variable-size array or Varray
 
-#### __Index-By Table__
+### __Index-By Table__
 
 An index-by table (also called an associative array) is a set of __key-value__ pairs. Each key is unique and is used to locate the corresponding value. The key can be either an integer or a string.
 
@@ -713,7 +714,7 @@ TYPE type_name IS TABLE OF element_type [NOT NULL] INDEX BY subscript_type;
 table_name type_name;
 ```
 
-#### __Nested Tables__
+### __Nested Tables__
 
 A nested table is like a one-dimensional array with an arbitrary number of elements. However, a nested table differs from an array in the following aspects −
 
@@ -732,7 +733,7 @@ This declaration is similar to the declaration of an index-by table, but there i
 
 A nested table can be stored in a database column. It can further be used for simplifying SQL operations where you join a single-column table with a larger table. An associative array cannot be stored in the database.
 
-### PL/SQL Object
+## PL/SQL Object
 
 An object type allows you to create composite types. Using objects allow you to implement real world objects with specific structure of data and methods for operating it. Objects have attributes and methods. Attributes are properties of an object and are used for storing an object's state; and methods are used for modeling its behavior.
 
