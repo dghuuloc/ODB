@@ -449,7 +449,8 @@ ON <join_condition>
 WHERE <where_condition>
 GROUP BY <group_by_list>
 HAVING <having_condition>
-ORDER BY <order_by_list> [ASC/DESC];
+ORDER BY <order_by_list> [ASC/DESC]
+FETCH FIRST 1 ROWS ONLY;
 ```
 
 Note that the `HAVING` clause filters groups of rows while the `WHERE` clause filters rows. If you use the `HAVING` clause without the `GROUP BY` clause, the `HAVING` clause works like the `WHERE` clause.
