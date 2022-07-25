@@ -44,7 +44,7 @@ JSON arrays are surrounded by square brackets [].
 
 ``` JSON
 {
-  "Actors": [
+  "actors": [
     {
       "name": "Tom Cruise",
       "age": 56,
@@ -80,6 +80,12 @@ JSON arrays are surrounded by square brackets [].
   ]
 }
 ```
+
+## JSON Path Expression
+
+The `$` means start at the absolute top of the JSON structure and `.actors` means move down one level to then `actors` element.
+
+`[*]` means search in all elements of the `actors` array.
 
 ## Oracle SQL operators
 
