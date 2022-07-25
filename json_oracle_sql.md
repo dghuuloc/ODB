@@ -81,6 +81,13 @@ JSON arrays are surrounded by square brackets [].
 }
 ```
 
+### Overview of JSON
+
+In SQL, you can access JSON data stored in Oracle Database using the following:
+
+- Function `JSON_VALUE`, `JSON_QUERY`, `JSON_TABLE`.
+- Conditions `JSON_EXISTS`, `IS JSON`, `IS NOT JSON`, and `JSON_TEXTCONTAINS`
+
 ## JSON Path Expression
 
 The `$` means start at the absolute top of the JSON structure and `.actors` means move down one level to then `actors` element.
