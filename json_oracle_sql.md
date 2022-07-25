@@ -91,9 +91,58 @@ The wildcard member accessor `'.*'` gives access to all JSON object members inde
 
 The wildcard element accessor `'[*]'` gives access to all elements in an array.
 
+### Example
+
+```JSON
+[
+  {
+    "name": "John",
+    "skills": ["SQL", "C#", "Azure"]
+  },
+  {
+    "name": "Jane",
+    "surname": "Doe"
+  }
+]
+```
+
+| Item         | Price |
+|--------------|:-----:|
+| $.people[0].name |  John |
+| $.people[1]      | { "name": "Jane", "surname": null, "active": true } |
+| $.people[1].surname |  null |
+
 ## Oracle SQL operators
 
 - `JSON_VALUE`:  to select one scalar value in the JSON data and return it to SQL. (JSON_VALUE is the ‘bridge’ from a JSON value to a SQL value).
 - `JSON_EXISTS`: a Boolean operator typically used in the WHERE clause to filter rows based on properties in the JSON data.
 - `JSON_QUERY`: an operator to select (scalar or complex) value in the JSON data. In contrast to JSON_VALUE which always returns one scalar value, JSON_QUERY returns a nested JSON fragment (object or array). With JSON_QUERY a user can also select multiple values and have them wrapped inside a JSON array.
 - `JSON_TABLE`: the most powerful operator that exposes JSON data as a relational view. With JSON_TABLE you can turn your JSON data into a relational representation. 
+- `IS [NOT] JSON`: checks if the document is josn or not.
+
+### Call Parameters
+
+```SQL
+data is [not] json
+```
+
+```SQL
+JSON_EXISTS(data, $path  ON_ERROR)
+```
+
+```SQL
+JSON_TEXTCONTAINS(column, $PATH, searchstring)
+```
+
+```SQL
+JSON_QUERY(data, $PATH returning query_wrapper ON_ERROR)
+```
+
+```SQL
+JSON_TABLE(data, $PATH returning ON_ERROR COLUMNS columnlist)
+```
+
+```SQL
+JSON_VALUE(data, $PATH returning ON_ERROR)
+```
+
