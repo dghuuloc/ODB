@@ -153,3 +153,186 @@ JSON_TABLE(data, $PATH returning ON_ERROR COLUMNS columnlist)
 JSON_VALUE(data, $PATH returning ON_ERROR)
 ```
 
+## Examples
+
+```SQL
+-- json_doc
+{
+    "PONumber": 2286,
+    "Reference": "ABANDA-20140803",
+    "Requestor": "Amit Banda",
+    "User": "ABANDA",
+    "CostCenter": "A80",
+    "ShippingInstructions": {
+        "name": "Amit Banda",
+        "Address": {
+            "street": "Magdalen Centre, The Isis Science Park",
+            "city": "Oxford",
+            "county": "Oxon.",
+            "postcode": "OX9 9ZB",
+            "country": "United Kingdom"
+        },
+        "Phone": [
+            {
+                "type": "Office",
+                "number": "861-555-4886"
+            }
+        ]
+    },
+    "Special Instructions": "Hand Carry",
+    "LineItems": [
+        {
+            "ItemNumber": 1,
+            "Part": {
+                "Description": "Cookie's Fortune",
+                "UnitPrice": 19.95,
+                "UPCCode": 44004499323
+            },
+            "Quantity": 4.0
+        }, {
+            "ItemNumber": 2,
+            "Part": {
+                "Description": "A Bright Shining Lie",
+                "UnitPrice": 19.95,
+                "UPCCode": 26359122026
+            },
+            "Quantity": 4.0
+        }, {
+            "ItemNumber": 3,
+            "Part": {
+                "Description": "Karaoke: 25 Song Country Library Vol.1 201",
+                "UnitPrice": 19.95,
+                "UPCCode": 13023006096
+            },
+            "Quantity": 7.0
+        }, {
+            "ItemNumber": 4,
+            "Part": {
+                "Description": "Red Skelton: Lost Episodes",
+                "UnitPrice": 19.95,
+                "UPCCode": 18713811172
+            },
+            "Quantity": 4.0
+        }, {
+            "ItemNumber": 5,
+            "Part": {
+                "Description": "Stealing Home",
+                "UnitPrice": 19.95,
+                "UPCCode": 85391181828
+            },
+            "Quantity": 9.0
+        }
+    ]
+}
+
+
+CREATE TABLE PURCHASEORDER_MASTER(
+    PO_NUMBER        NUMBER(10),
+    REQUESTOR        VARCHAR2(128 CHAR),
+    USERID           VARCHAR2(10 CHAR),
+    COSTCENTER       VARCHAR2(16),
+    SHIP_TO_NAME     VARCHAR2(20 CHAR),
+    SHIP_TO_STREET   VARCHAR2(38 CHAR),
+    SHIP_TO_CITY     VARCHAR2(32 CHAR),
+    SHIP_TO_COUNTY   VARCHAR2(32 CHAR),
+    SHIP_TO_POSTCODE VARCHAR2(32 CHAR),
+    SHIP_TO_STATE    VARCHAR2(2 CHAR),
+    SHIP_TO_PROVINCE VARCHAR2(2 CHAR),
+    SHIP_TO_ZIP      VARCHAR2(8 CHAR),
+    SHIP_TO_COUNTRY  VARCHAR2(32 CHAR),
+    SHIP_TO_PHONE    VARCHAR2(24 CHAR),
+    INSTRUCTIONS     VARCHAR2(2048 CHAR)
+);
+
+CREATE TABLE PURCHASEORDER_LINEITEM(
+    PO_NUMBER      NUMBER(10),
+    ITEMNO         NUMBER(38),
+    DESCRIPTION    VARCHAR2(256 CHAR),
+    UPCCODE        VARCHAR2(14 CHAR),
+    QUANTITY       NUMBER(12,4),
+    UNITPRICE      NUMBER(14,2)
+);
+
+INSERT ALL 
+  WHEN (SEQ# = 1) -- Only for the first row output by JSON_TABLE
+  THEN INTO PURCHASEORDER_MASTER(
+      PO_NUMBER,
+      REQUESTOR,
+      USERID,
+      COSTCENTER,
+      SHIP_TO_NAME,
+      SHIP_TO_STREET,
+      SHIP_TO_CITY,
+      SHIP_TO_COUNTY,
+      SHIP_TO_POSTCODE,
+      SHIP_TO_STATE,
+      SHIP_TO_PROVINCE,
+      SHIP_TO_ZIP,
+      SHIP_TO_COUNTRY,
+      SHIP_TO_PHONE,
+      INSTRUCTIONS) VALUES (
+      PO_NUMBER,
+      REQUESTOR,
+      USERID,
+      COSTCENTER,
+      SHIP_TO_NAME,
+      SHIP_TO_STREET,
+      SHIP_TO_CITY,
+      SHIP_TO_COUNTY,
+      SHIP_TO_POSTCODE,
+      SHIP_TO_STATE,
+      SHIP_TO_PROVINCE,
+      SHIP_TO_ZIP,
+      SHIP_TO_COUNTRY,
+      SHIP_TO_PHONE,
+      INSTRUCTIONS)
+  WHEN (1=1) -- For all rows output by JSON_TABLE
+  THEN INTO PURCHASEORDER_LINEITEM(
+      PO_NUMBER,
+      ITEMNO,
+      DESCRIPTION,
+      UPCCODE,
+      QUANTITY,
+      UNITPRICE) VALUES(
+      PO_NUMBER,
+      ITEMNO,
+      DESCRIPTION,
+      UPCCODE,
+      QUANTITY,
+      UNITPRICE
+      )
+  SELECT *
+    FROM JSON_TABLE(BFILENAME(json_doc, '$' 
+      COLUMNS(
+          PO_NUMBER        NUMBER(10)           path '$.PONumber',
+          REFERENCE        VARCHAR2(30 CHAR)    path '$.Reference',
+          REQUESTOR        VARCHAR2(128 CHAR)   path '$.Requestor',
+          USERID           VARCHAR2(10 CHAR)    path '$.User',
+          COSTCENTER       VARCHAR2(16)         path '$.CostCenter',
+          SHIP_TO_NAME     VARCHAR2(20 CHAR)    path '$.ShippingInstructions.name',
+          SHIP_TO_STREET   VARCHAR2(32 CHAR)    path '$.ShippingInstructions.Address.street',
+          SHIP_TO_CITY     VARCHAR2(32 CHAR)    path '$.ShippingInstructions.Address.city',
+          SHIP_TO_COUNTY   VARCHAR2(32 CHAR)    path '$.ShippingInstructions.Address.county',
+          SHIP_TO_POSTCODE VARCHAR2(10 CHAR)    path '$.ShippingInstructions.Address.postcode',
+          SHIP_TO_STATE    VARCHAR2(2 CHAR)     path '$.ShippingInstructions.Address.state',
+          SHIP_TO_PROVINCE VARCHAR2(2 CHAR)     path '$.ShippingInstructions.Address.province',
+          SHIP_TO_ZIP      VARCHAR2(8 CHAR)     path '$.ShippingInstructions.Address.zipCode',
+          SHIP_TO_COUNTRY  VARCHAR2(32 CHAR)    path '$.ShippingInstructions.Address.country',
+          SHIP_TO_PHONE    VARCHAR2(24 CHAR)    path '$.ShippingInstructions.Phones[0].number',
+          INSTRUCTIONS     VARCHAR2(2048 CHAR)  path '$.SpecialInstructions',
+          NESTED PATH '$.LineItems[*]'
+          COLUMNS(
+              SEQ#             for ordinality,
+              ITEMNO         NUMBER(38)           path '$.ItemNumber',
+              DESCRIPTION    VARCHAR2(256 CHAR)   path '$.Part.Description',
+              UPCCODE        VARCHAR2(14 CHAR)    path '$.Part.UPCCode',
+              QUANTITY       NUMBER(12,4)         path '$.Quantity',
+              UNITPRICE      NUMBER(14,2)         path '$.Part.UnitPrice'
+         )
+     )
+);
+
+```
+
+
+
