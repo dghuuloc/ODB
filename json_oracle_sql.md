@@ -6,6 +6,14 @@
 
 ## INTRODUCTION JSON 
 
+### What data type to choose?
+
+JSON objects are strings, and are treated like this in an Oracle database. If we want to include a column with JSON data into a table, there are several data types we can choose from:
+
+- VARCHAR2(4000) / VARCHAR2(32767)
+- CLOB
+- BLOB
+
 ### Valid JSON Data Types
 - String
 - Number
