@@ -85,7 +85,11 @@ JSON arrays are surrounded by square brackets [].
 
 The `$` means start at the absolute top of the JSON structure and `.actors` means move down one level to then `actors` element.
 
+The wildcard member accessor `'.*'` gives access to all JSON object members independent from their name.
+
 `[*]` means search in all elements of the `actors` array.
+
+The wildcard element accessor `'[*]'` gives access to all elements in an array.
 
 ## Oracle SQL operators
 
