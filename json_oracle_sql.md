@@ -122,10 +122,18 @@ The wildcard element accessor `'[*]'` gives access to all elements in an array.
 ## Oracle SQL operators
 
 - `JSON_VALUE`:  to select one scalar value in the JSON data and return it to SQL. (JSON_VALUE is the ‘bridge’ from a JSON value to a SQL value).
+
+`JSON_VALUE` function only returns single values, or “scalar values” as they are called in the documentation.
+
+To return objects or arrays, we need to use the JSON_QUERY function.
+
 - `JSON_EXISTS`: a Boolean operator typically used in the WHERE clause to filter rows based on properties in the JSON data.
 - `JSON_QUERY`: an operator to select (scalar or complex) value in the JSON data. In contrast to JSON_VALUE which always returns one scalar value, JSON_QUERY returns a nested JSON fragment (object or array). With JSON_QUERY a user can also select multiple values and have them wrapped inside a JSON array.
 - `JSON_TABLE`: the most powerful operator that exposes JSON data as a relational view. With JSON_TABLE you can turn your JSON data into a relational representation. 
 - `IS [NOT] JSON`: checks if the document is josn or not.
+
+
+To return objects or arrays, we need to use the JSON_QUERY function.
 
 ### Call Parameters
 
