@@ -678,6 +678,38 @@ DECLARE
     ]
  }
 ```
+Parse JSON Array in SQL and PL/SQL
+
+```SQL
+SELECT value
+FROM json_table('["content", "duration"]', '$[*]'
+COLUMNS (value PATH '$'
+));
+
+-- Or more general
+with json as
+( select '["mit", "nach", "nebst", "bei"]' doc
+from dual
+)
+SELECT value
+FROM json_table( (select doc from json) , '$[*]'
+COLUMNS (value PATH '$'
+)
+);
+
+with json as 
+( select '[{"firstName": "Tobias", "lastName":"Jellema"},{"firstName": "Anna", "lastName":"Vink"} ]' doc  
+  from   dual  
+)  
+SELECT first_name 
+,      last_name 
+FROM  json_table( (select doc from json) , '$[*]' 
+                COLUMNS ( first_name PATH '$.firstName' 
+                        , last_name PATH '$.lastName' 
+                        )  
+               );
+
+```
 
 ## JSON Templates
 
